@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose Your Seat</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lemon+Milk&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Lemon Milk', sans-serif;
+        }
+
+        body {
+          background-color: #f8face;
+          color: #151515;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        header {
+            width: 100%;
+            /* background-color: #f99005; */
+            color: #0b0b0b;
+            padding: 20px 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #0e0d0d;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #ffd700;
+        }
+
+        .container {
+            text-align: center;
+            padding: 50px;
+            width: 90%;
+            max-width: 800px;
+            background-color: #fff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #080808;
+        }
+
+        .seat-map {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin: 30px auto;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .seat {
+            width: 60px;
+            height: 60px;
+            background-color: #f5a510;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .seat.taken {
+            background-color: #888;
+            cursor: not-allowed;
+        }
+
+        .seat.selected {
+            background-color: #ff5500;
+            color: #333;
+        }
+
+        .legend {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .legend div {
+            margin: 0 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .legend div span {
+            width: 20px;
+            height: 20px;
+            display: inline-block;
+            margin-right: 8px;
+            border-radius: 4px;
+        }
+
+        .legend .available span {
+            background-color: #4bb300;
+        }
+
+        .legend .taken span {
+            background-color: #888;
+        }
+
+        .legend .selected span {
+            background-color: #ff5100;
+        }
+
+        .action {
+            margin-top: 20px;
+        }
+
+        .action button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            color: #fff;
+            background-color: #fbb622;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .action button:hover {
+            background-color: #0c0c0c;
+        }
+
+      
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">BusTicket</div>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Features</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1>Choose Your Seat</h1>
+        <div class="seat-map">
+            <!-- Example seats -->
+            <div class="seat">1</div>
+            <div class="seat">2</div>
+            <div class="seat">3</div>
+            <div class="seat">4</div>
+            <div class="seat">5</div>
+            <div class="seat">6</div>
+            <div class="seat">7</div>
+            <div class="seat">8</div>
+            <div class="seat">9</div>
+            <div class="seat">10</div>
+            <div class="seat">11</div>
+            <div class="seat">12</div>
+            <div class="seat">13</div>
+            <div class="seat">14</div>
+            <div class="seat">15</div>
+            <div class="seat">16</div>
+            <div class="seat">14</div>
+            <div class="seat">15</div>
+            <div class="seat">16</div>
+            <div class="seat">14</div>
+            <div class="seat">15</div>
+            <div class="seat">16</div>
+
+        </div>
+
+        <div class="legend">
+            <div class="available"><span></span> Available</div>
+            <div class="taken"><span></span> Taken</div>
+            <div class="selected"><span></span> Selected</div>
+        </div>
+
+        <div class="action">
+            <button>Confirm Selection</button>
+        </div>
+    </div>
+
+    
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const seats = document.querySelectorAll('.seat');
+
+            seats.forEach(seat => {
+                if (!seat.classList.contains('taken')) {
+                    seat.addEventListener('click', () => {
+                        // Toggle selection
+                        if (seat.classList.contains('selected')) {
+                            seat.classList.remove('selected');
+                        } else {
+                            seat.classList.add('selected');
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
